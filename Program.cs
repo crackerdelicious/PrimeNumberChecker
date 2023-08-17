@@ -48,7 +48,28 @@
 
         static bool IsPrime(int n)
         {
-            return (n % 2 != 0) || (n == 2);
+            if (n <= 1)
+            {
+                return false;
+            }
+            if (n <= 3)
+            {
+                return true;
+            }
+            if (n % 2 == 0 || n % 3 == 0)
+            {
+                return false;
+            }
+
+            int sqrt = (int)Math.Sqrt(n);
+            for (int i = 5; i <= sqrt; i += 6)
+            {
+                if (n % i == 0 || n % (i + 2) == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
